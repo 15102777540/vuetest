@@ -3,7 +3,7 @@
     <div class="left classify-one" style="height: 712px;">
       <ul id="firstCategory">
         <li class="hot" cateid="9987">
-          <a href="javascript:void(0)">手机199</a>
+          <a href="javascript:void(0)">手机</a>
         </li>
         <li cateid="652">
           <a href="javascript:void(0)">数码</a>
