@@ -16,12 +16,13 @@
           <categoryA></categoryA>
         </mt-tab-container-item>
         <mt-tab-container-item id="购物车">
-          <mt-cell v-for="n in 7" :title="'购物车 ' + n" :key="n.index"/>
+          <!--<mt-cell v-for="n in 7" :title="'购物车 ' + n" :key="n.index"/>-->
+           <LogisticsA></LogisticsA>
         </mt-tab-container-item>
         <mt-tab-container-item id="我的">
           <div class="page-part">
             <!-- cell -->
-            <mt-cell v-for="n in 12" :title="'我的 ' + n" :key="n.index"/>
+            <mt-cell v-for="n in 12" :title="'我的 ' + n" :key="n.index"/>           
           </div>
           <router-link to="/">
             <!-- button -->
@@ -55,6 +56,7 @@
 import componentsA from "@/components/HelloWorld";
 import componentsIndex from "@/components/Index";
 import categoryA from "@/components/category";
+import LogisticsA from "@/components/Logistics";
 
 export default {
   name: "page-tabbar",
@@ -66,7 +68,8 @@ export default {
   components: {
     componentsA,
     componentsIndex,
-    categoryA
+    categoryA,
+    LogisticsA
   },
   methods: {
     c(a) {

@@ -1,52 +1,49 @@
 <template>
- <div style="height:50px">
-        <mt-search
-          cancel-text="取消"
-          v-model="searchVal"
-          placeholder="搜索"
-          @keyup.enter.native="submit"
-        ></mt-search>
-      </div>
-  <!--<div class="package-status">
-    <div class="status-box">
-      <ul class="status-list">
-        <li>
-          <div class="status-content-before">您的订单开始处理</div>
-          <div class="status-time-before">2017-08-17 23:31 周四</div>
-          <div class="status-line"></div>
-        </li>
-        <li>
-          <div class="status-content-before">卖家发货</div>
-          <div class="status-time-before">2017-08-18 09:11 周五</div>
-          <div class="status-line"></div>
-        </li>
-        <li>
-          <div class="status-content-before">发往深圳中转站</div>
-          <div class="status-time-before">2017-08-19 01:21 周六</div>
-          <div class="status-line"></div>
-        </li>
-        <li>
-          <div class="status-content-before">到达深圳</div>
-          <div class="status-time-before">2017-08-19 06:21 周六</div>
-          <div class="status-line"></div>
-        </li>
-        <li>
-          <div class="status-content-before">发往潮汕中心</div>
-          <div class="status-time-before">2017-08-19 09:21 周六</div>
-          <div class="status-line"></div>
-        </li>
-        <li class="latest">
-          <div class="status-content-latest">快件到达 潮汕中心</div>
-          <div class="status-time-latest">2017-08-20 14:16 周日</div>
-          <div class="status-line"></div>
-        </li>
-      </ul>
+  <div>
+    <div style="height:50px">
+      <mt-search cancel-text="取消" placeholder="搜索"></mt-search>
     </div>
-  </div>-->
+    <div class="package-status">
+      <div class="status-box">
+        <ul class="status-list">
+          <li>
+            <div class="status-content-before">您的订单开始处理</div>
+            <div class="status-time-before">2017-08-17 23:31 周四</div>
+            <div class="status-line"></div>
+          </li>
+          <li>
+            <div class="status-content-before">卖家发货</div>
+            <div class="status-time-before">2017-08-18 09:11 周五</div>
+            <div class="status-line"></div>
+          </li>
+          <li>
+            <div class="status-content-before">发往深圳中转站</div>
+            <div class="status-time-before">2017-08-19 01:21 周六</div>
+            <div class="status-line"></div>
+          </li>
+          <li>
+            <div class="status-content-before">到达深圳</div>
+            <div class="status-time-before">2017-08-19 06:21 周六</div>
+            <div class="status-line"></div>
+          </li>
+          <li>
+            <div class="status-content-before">发往潮汕中心</div>
+            <div class="status-time-before">2017-08-19 09:21 周六</div>
+            <div class="status-line"></div>
+          </li>
+          <li class="latest">
+            <div class="status-content-latest">快件到达 潮汕中心</div>
+            <div class="status-time-latest">2017-08-20 14:16 周日</div>
+            <div class="status-line"></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </template>
 <script>
 export default {
-  name: "index",
+  name: "Logistics",
   data() {
     return {
       msg: "Welcome to Your Vue.js App"
