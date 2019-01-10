@@ -21,6 +21,21 @@ import { InfiniteScroll } from 'mint-ui';
 
 import { Spinner } from 'mint-ui';
 
+/*import axios from "axios";
+
+axios.defaults.timeout = 5000; // 在超时前，所有请求都会等待 5 秒
+axios.defaults.headers["Content-Type"] = "application/x-www-form-urlencoded;charset=UTF-8";
+axios.defaults.headers["Access-Control-Allow-Origin"] = "*";
+// 配置请求头
+axios.defaults.baseURL = "https://localhost:44341"; // 配置接口地址
+axios.defaults.withCredentials = false;
+
+Vue.prototype.$axios = axios; // 将axios配置成vue的原型*/
+
+import VueResource from 'vue-resource'
+
+/*使用VueResource插件*/
+Vue.use(VueResource)
 
 Vue.component(Spinner.name, Spinner);
 

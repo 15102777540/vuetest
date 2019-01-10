@@ -9,7 +9,7 @@
         <mt-tab-container-item id="首页">
           <componentsA></componentsA>
           <div style="margin-top: 13%">
-            <componentsIndex></componentsIndex>            
+            <componentsIndex></componentsIndex>
           </div>
         </mt-tab-container-item>
         <mt-tab-container-item id="分类">
@@ -17,12 +17,12 @@
         </mt-tab-container-item>
         <mt-tab-container-item id="购物车">
           <!--<mt-cell v-for="n in 7" :title="'购物车 ' + n" :key="n.index"/>-->
-           <LogisticsA></LogisticsA>
+          <LogisticsA></LogisticsA>
         </mt-tab-container-item>
         <mt-tab-container-item id="我的">
           <div class="page-part">
             <!-- cell -->
-            <mt-cell v-for="n in 12" :title="'我的 ' + n" :key="n.index"/>           
+            <mt-cell v-for="n in 12" :title="'我的 ' + n" :key="n.index"/>
           </div>
           <router-link to="/">
             <!-- button -->
@@ -81,7 +81,55 @@ export default {
       } else if (a == 2) {
         this.selected = "订单";
       }
-      console.log(a);
+      /*this.$axios.get("/api/Home/GetA?name=1&sex=2019").then(response => {
+        console.log(response);
+      });*/
+      /*this.$http
+        .post(
+          "/api/order/orderTrack",
+          { token: "k5curnZszFA7dxmAlNYfIXcbh", jdOrderId: "83907747500" },
+          {
+            headers: {
+              "Access-Control-Allow-Origin": "*"
+            }
+          }
+        )
+        .then(
+          response => {
+            console.log(response + "," + "1");
+          },
+          response => {
+            console.log(response + "," + "2");
+          }
+        );*/
+      this.$http
+        .get(
+          "/api/playlist/detail?id=19723756",
+          {},
+          {
+            headers: {},
+            emulateJSON: true
+          }
+        )
+        .then(
+          function(res) {
+            this.musics = res.data.result.tracks;
+            console.log(this.musics);
+          },
+          function(error) {
+            console.log(error);
+          }
+        );
+      this.$http
+        .get("/api/Home/GetA?a=123", {}, { headers: {}, emulateJSON: true })
+        .then(
+          res => {
+            console.log(res);
+          },
+          error => {
+            console.log(error);
+          }
+        );
     }
   }
 };
