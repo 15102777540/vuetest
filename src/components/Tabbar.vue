@@ -22,7 +22,7 @@
         <mt-tab-container-item id="我的">
           <div class="page-part">
             <!-- cell -->
-            <mt-cell v-for="n in 12" :title="'我的 ' + n" :key="n.index"/>
+            <mt-cell v-for="n in smssendlog" :title="n.smscontent" :key="n.index"/>
           </div>
           <router-link to="/">
             <!-- button -->
@@ -62,7 +62,8 @@ export default {
   name: "page-tabbar",
   data() {
     return {
-      selected: "首页"
+      selected: "首页",
+      smssendlog:[]
     };
   },
   components: {
@@ -83,48 +84,13 @@ export default {
       }
       /*this.$axios.get("/api/Home/GetA?name=1&sex=2019").then(response => {
         console.log(response);
-      });*/
-      /*this.$http
-        .post(
-          "/api/order/orderTrack",
-          { token: "k5curnZszFA7dxmAlNYfIXcbh", jdOrderId: "83907747500" },
-          {
-            headers: {
-              "Access-Control-Allow-Origin": "*"
-            }
-          }
-        )
-        .then(
-          response => {
-            console.log(response + "," + "1");
-          },
-          response => {
-            console.log(response + "," + "2");
-          }
-        );*/
+      });*/            
       this.$http
-        .get(
-          "/api/playlist/detail?id=19723756",
-          {},
-          {
-            headers: {},
-            emulateJSON: true
-          }
-        )
+        .get("/api/Home/GetProductList", {}, { headers: {}, emulateJSON: true })
         .then(
-          function(res) {
-            this.musics = res.data.result.tracks;
-            console.log(this.musics);
-          },
-          function(error) {
-            console.log(error);
-          }
-        );
-      this.$http
-        .get("/api/Home/GetA?a=123", {}, { headers: {}, emulateJSON: true })
-        .then(
-          res => {
-            console.log(res);
+          res => {   
+            this.smssendlog = res.data;     
+            console.log(res.data);
           },
           error => {
             console.log(error);
