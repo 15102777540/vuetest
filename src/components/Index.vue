@@ -74,21 +74,21 @@
         <div class="tabContent">
           <div class="proListItme-table" v-for="item in list" :key="item.index">
             <a href>
-              <img src="../images/iphone.jpg" width="100" height="100">
+              <img :src="item.showimg" width="100" height="100">
             </a>
             <div class="proListItme2">
               <a href>
-                <span>{{item}}</span>
+                <span>{{item.name}}</span>
               </a>
               <p>
                 <a href="javascript:void(0)">热销</a>
                 <a href="javascript:void(0)">推荐</a>
               </p>
-              <b>￥42.90</b>
+              <b>￥{{item.price}}</b>
             </div>
             <div class="clear"></div>
           </div>
-          <div class="loading-box tc">
+          <div class="loading-box tc" v-show="loading">
             <mt-spinner type="snake" class="loading-more"></mt-spinner>
             <span class="loading-more-txt">加载中...</span>
           </div>
@@ -103,27 +103,40 @@ export default {
   data() {
     return {
       msg: "Welcome to Your Vue.js App",
-      list: [
-        "Apple iPhone1",
-        "Apple iPhone2",
-        "Apple iPhone3",
-        "Apple iPhone4"
-      ],
+      list: [],
       t: 1,
       isLoading: false,
       loading: false
     };
   },
   methods: {
-    loadMore() {
+    loadMore() {     
       this.isLoading = true;
       this.loading = true;
       this.t++;
       setTimeout(() => {
-        let last = this.list[this.list.length - 1];
+        /*let last = this.list[this.list.length - 1];
         for (let i = this.list.length + 1; i <= this.t * 4; i++) {
-          this.list.push("Apple iPhone" + i);
-        }
+          this.list.push("Apple iPhone" + i);          
+        }*/
+        this.$http
+          .get(
+            "/api/Home/GetProductList",
+            {params:{pageIndex:this.t,pageSize:10}},
+            { headers: {}, emulateJSON: true }
+          )
+          .then(
+            res => {
+              console.log(res.data)
+              res.data.forEach(element => {
+                this.list.push(element);
+              });
+            },
+            error => {
+              console.log(error);
+            }
+          );
+
         this.loading = false;
         this.isLoading = false;
       }, 2000);
