@@ -110,7 +110,7 @@ export default {
     };
   },
   methods: {
-    loadMore() {     
+    loadMore() {
       this.isLoading = true;
       this.loading = true;
       this.t++;
@@ -119,9 +119,9 @@ export default {
         for (let i = this.list.length + 1; i <= this.t * 4; i++) {
           this.list.push("Apple iPhone" + i);          
         }*/
-        this.$http
-          .get(
-            "/api/Home/GetProductList",
+        /*this.$http
+          .jsonp(
+            "http://192.168.1.105:8001/api/Home/GetProductList?pageIndex=1&pageSize=10",
             {params:{pageIndex:this.t,pageSize:10}},
             { headers: {}, emulateJSON: true }
           )
@@ -134,6 +134,45 @@ export default {
             },
             error => {
               console.log(error);
+            }
+          );*/
+        let JSONparams = {
+          params: {
+            pageIndex: this.t,
+            pageSize: 4
+          },
+          jsonp: "callback" // 设置回调函数的参数的一个名字，默认是话是callback,
+        };
+        /*this.$http
+          .jsonp(
+            "https://sug.so.360.cn/suggest",
+            { word: "a" },
+            { jsonp: "callback" }
+          )
+          .then(
+            function(res) {
+              console.log(res.data);
+            },
+            function(res) {
+              console.log(res.status);
+            }
+          );*/
+        //   process.env.API_HOST
+        this.$http
+          .jsonp(
+            "http://192.168.1.105:8001/api/Home/GetProductList",
+            JSONparams,
+            { jsonp: "callback" }
+          )
+          .then(
+            res => {
+              console.log(res);
+              res.data.forEach(element => {
+                this.list.push(element);
+              });
+            },
+            err => {
+              console.log(err);
             }
           );
 
